@@ -13,7 +13,7 @@ const readFile = (path) => {
     });
 };
 
-const getKeysFromFile = () => {
+const getKeysFromFile = async() => {
     return readFile(KEY_FILE)
         .then(data => {
             return compact(data.split(os.EOL));

@@ -7,7 +7,7 @@ const LINE_ENDING = require('os').EOL;
 
 module.exports = function (req, res) {
   let newApiKey = shortid.generate();
-  let keyStoreFile = fs.readFileSync(VALID_KEYS_PATH,"utf-8")
-  keyStoreFile.append(newApiKey+LINE_ENDING);
+  fs.appendFileSync(VALID_KEYS_PATH,newApiKey+LINE_ENDING);
+  return  res.send({apiKey:newApiKey})
 };
 

@@ -66,11 +66,13 @@ describe('express_authentication_middleware_basics', () => {
         let response;
         chai.request(server)
             .get('/auth')
-            .then(res => {
+            .then(async res => {
                 response = res;
-                return utils.getKeysFromFile();
+                
+                return await utils.getKeysFromFile();
             })
             .then(keys => {
+                console.log("response---->response",keys,response.body.apiKey)
                 keys[0].should.equal(response.body.apiKey);
                 done();
             })
